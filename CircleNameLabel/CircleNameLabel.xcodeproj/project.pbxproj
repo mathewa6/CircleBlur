@@ -306,6 +306,7 @@
 				97D8576C1CCFE7D70010953B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

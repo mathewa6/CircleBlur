@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,23 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-CF-bCQ" customClass="CNBlurredAbbreviatedLabel">
-                                <rect key="frame" x="20" y="28" width="120" height="120"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="letters" value="AH"/>
-                                </userDefinedRuntimeAttributes>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5G-a3-bci">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="307"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-CF-bCQ" customClass="CNBlurredAbbreviatedLabel">
+                                        <rect key="frame" x="8" y="220" width="120" height="120"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="letters" value="AH"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.73333333329999995" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jqg-CF-bCQ" secondAttribute="bottom" constant="425" id="yL6-s5-z2J"/>
+                            <constraint firstItem="r5G-a3-bci" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="90a-mc-pva"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="r5G-a3-bci" secondAttribute="bottom" constant="293" id="BMu-DY-Gvc"/>
+                            <constraint firstItem="r5G-a3-bci" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bit-QX-SLv"/>
+                            <constraint firstAttribute="trailing" secondItem="r5G-a3-bci" secondAttribute="trailing" id="lFY-ox-NbI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="yL6-s5-z2J"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

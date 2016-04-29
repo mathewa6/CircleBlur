@@ -24,8 +24,8 @@
     CNBlurredAbbreviatedLabel *bl = [[CNBlurredAbbreviatedLabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/1.5, self.view.frame.size.height/1.5, self.view.frame.size.width/3, self.view.frame.size.width/3)];
 //    bl.color = [UIColor redColor];
     [bl addGestureRecognizer:pan];
-    bl.colorAlpha = 0.25;
-    bl.labelRadiusFactor = 2.01;
+//    bl.colorAlpha = 0.25;
+//    bl.labelRadiusFactor = 2.01;
     [self.view addSubview: bl];
 }
 

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UILabel *letterLabel;
 @property (nonatomic, strong) UIVisualEffectView *blurView;
+@property (nonatomic, strong) UIVisualEffectView *vibView;
 
 @end
 
@@ -82,15 +83,24 @@
     return self;
 }
 
+-(void)layoutSubviews {
+    self.blurView.frame = self.bounds;
+    self.vibView.frame = self.blurView.bounds;
+}
+
 - (void)setDefaults {
+    _color = [UIColor lightGrayColor];
+    _colorAlpha = 0.5;
+    _labelRadiusFactor = 2.01;
     
 //  WTF http://stackoverflow.com/questions/28798269/round-uivisualeffectview
    
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle: UIBlurEffectStyleLight];
     UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    blurView.frame = self.bounds;
+    blurView.backgroundColor = [self.color colorWithAlphaComponent:self.colorAlpha];
     
     //Changing this line is what causes the blurring to act weird.
+    self.layer.cornerRadius = self.frame.size.width/2.01;
     self.clipsToBounds = YES;
     [self addSubview:blurView];
     
@@ -100,22 +110,19 @@
     UILabel *tx = [[UILabel alloc] initWithFrame:self.bounds];
     tx.font = [UIFont systemFontOfSize:size];
     tx.textColor = [UIColor whiteColor];
+//    tx.text = self.letters ? self.letters : @"_";
     tx.textAlignment = NSTextAlignmentCenter;
     tx.backgroundColor = [UIColor clearColor];
     
-    UIVibrancyEffect *vib = [UIVibrancyEffect effectForBlurEffect:blur];
-    UIVisualEffectView *vibView = [[UIVisualEffectView alloc] initWithEffect:vib];
-    vibView.frame = blurView.bounds;
-    [blurView.contentView addSubview:vibView];
-    [vibView.contentView addSubview:tx];
-    
-    
     self.letterLabel = tx;
     self.blurView = blurView;
-    self.color = [UIColor lightGrayColor];
-    self.colorAlpha = 0.5;
-    self.labelRadiusFactor = 2.01;
+    
+    UIVibrancyEffect *vib = [UIVibrancyEffect effectForBlurEffect:blur];
+    UIVisualEffectView *vibView = [[UIVisualEffectView alloc] initWithEffect:vib];
+    [blurView.contentView addSubview:vibView];
+    [vibView.contentView addSubview:tx];
 
+    self.vibView = vibView;
 }
 
 static CGFloat idealFontSizeForFont( UIFont *font, CGRect rect, NSString *text) {
