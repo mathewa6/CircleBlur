@@ -68,7 +68,6 @@
     return self;
 }
 
-//Commented code will convert it into non-blended non subtractive text with white background.
 - (void)setDefaults {
     self.color = [UIColor lightGrayColor];
     

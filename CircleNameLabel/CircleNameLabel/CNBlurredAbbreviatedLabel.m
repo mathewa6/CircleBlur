@@ -28,8 +28,22 @@
 
 - (void)setColor:(UIColor *)color {
     _color = color;
-    _blurView.backgroundColor = [color colorWithAlphaComponent:0.5];
+    if (color != [UIColor lightGrayColor]) {
+        _blurView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha - 0.1];
+    } else {
+        _blurView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha];
+    }
 
+}
+
+-(void)setColorAlpha:(CGFloat)colorAlpha {
+    _colorAlpha = colorAlpha;
+    _blurView.backgroundColor = [_color colorWithAlphaComponent: colorAlpha];
+}
+
+-(void)setLabelRadiusFactor:(CGFloat)labelRadiusFactor {
+    _labelRadiusFactor = labelRadiusFactor;
+    self.layer.cornerRadius = self.frame.size.width/labelRadiusFactor;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame {
@@ -68,18 +82,15 @@
     return self;
 }
 
-//Commented code will convert it into non-blended non subtractive text with white background.
 - (void)setDefaults {
-    self.color = [UIColor lightGrayColor];
     
 //  WTF http://stackoverflow.com/questions/28798269/round-uivisualeffectview
    
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle: UIBlurEffectStyleLight];
     UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    blurView.backgroundColor = [self.color colorWithAlphaComponent:0.5];
     blurView.frame = self.bounds;
     
-    self.layer.cornerRadius = self.frame.size.width/2.01;
+    //Changing this line is what causes the blurring to act weird.
     self.clipsToBounds = YES;
     [self addSubview:blurView];
     
@@ -89,18 +100,21 @@
     UILabel *tx = [[UILabel alloc] initWithFrame:self.bounds];
     tx.font = [UIFont systemFontOfSize:size];
     tx.textColor = [UIColor whiteColor];
-//    tx.text = self.letters ? self.letters : @"_";
     tx.textAlignment = NSTextAlignmentCenter;
     tx.backgroundColor = [UIColor clearColor];
-    
-    self.letterLabel = tx;
-    self.blurView = blurView;
     
     UIVibrancyEffect *vib = [UIVibrancyEffect effectForBlurEffect:blur];
     UIVisualEffectView *vibView = [[UIVisualEffectView alloc] initWithEffect:vib];
     vibView.frame = blurView.bounds;
     [blurView.contentView addSubview:vibView];
     [vibView.contentView addSubview:tx];
+    
+    
+    self.letterLabel = tx;
+    self.blurView = blurView;
+    self.color = [UIColor lightGrayColor];
+    self.colorAlpha = 0.5;
+    self.labelRadiusFactor = 2.01;
 
 }
 

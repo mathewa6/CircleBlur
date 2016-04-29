@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSString *letters;
 @property (nonatomic, strong) UIColor *color;
 
+@property (nonatomic) CGFloat colorAlpha;
+@property (nonatomic) CGFloat labelRadiusFactor;
+
 - (instancetype)initWithFrame:(CGRect)frame text: (NSString *)letters;
 - (instancetype)initWithCoder:(NSCoder *)coder text: (NSString *)letters;
 
