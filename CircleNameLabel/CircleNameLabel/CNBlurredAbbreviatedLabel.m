@@ -100,7 +100,8 @@
     blurView.backgroundColor = [self.color colorWithAlphaComponent:self.colorAlpha];
     
     //Changing this line is what causes the blurring to act weird.
-    self.layer.cornerRadius = self.frame.size.width/2.01;
+    self.layer.cornerRadius = self.frame.size.width/_labelRadiusFactor;
+    
     self.clipsToBounds = YES;
     [self addSubview:blurView];
     

@@ -59,6 +59,9 @@
                             <constraint firstAttribute="trailing" secondItem="r5G-a3-bci" secondAttribute="trailing" id="lFY-ox-NbI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bugLabel" destination="Smj-A5-jab" id="Rgy-07-fBp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
