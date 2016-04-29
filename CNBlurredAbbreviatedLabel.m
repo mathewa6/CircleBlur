@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UILabel *letterLabel;
 @property (nonatomic, strong) UIVisualEffectView *blurView;
+@property (nonatomic, strong) UIVisualEffectView *vibView;
 
 @end
 
@@ -28,8 +29,22 @@
 
 - (void)setColor:(UIColor *)color {
     _color = color;
-    _blurView.backgroundColor = [color colorWithAlphaComponent:0.5];
+    if (color != [UIColor lightGrayColor]) {
+        _blurView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha - 0.1];
+    } else {
+        _blurView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha];
+    }
 
+}
+
+-(void)setColorAlpha:(CGFloat)colorAlpha {
+    _colorAlpha = colorAlpha;
+    _blurView.backgroundColor = [_color colorWithAlphaComponent: colorAlpha];
+}
+
+-(void)setLabelRadiusFactor:(CGFloat)labelRadiusFactor {
+    _labelRadiusFactor = labelRadiusFactor;
+    self.layer.cornerRadius = self.frame.size.width/labelRadiusFactor;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame {
@@ -68,17 +83,25 @@
     return self;
 }
 
+-(void)layoutSubviews {
+    self.blurView.frame = self.bounds;
+    self.vibView.frame = self.blurView.bounds;
+}
+
 - (void)setDefaults {
-    self.color = [UIColor lightGrayColor];
+    _color = [UIColor lightGrayColor];
+    _colorAlpha = 0.5;
+    _labelRadiusFactor = 2.01;
     
 //  WTF http://stackoverflow.com/questions/28798269/round-uivisualeffectview
    
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle: UIBlurEffectStyleLight];
     UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    blurView.backgroundColor = [self.color colorWithAlphaComponent:0.5];
-    blurView.frame = self.bounds;
+    blurView.backgroundColor = [self.color colorWithAlphaComponent:self.colorAlpha];
     
-    self.layer.cornerRadius = self.frame.size.width/2.01;
+    //Changing this line is what causes the blurring to act weird.
+    self.layer.cornerRadius = self.frame.size.width/_labelRadiusFactor;
+    
     self.clipsToBounds = YES;
     [self addSubview:blurView];
     
@@ -92,15 +115,14 @@
     tx.textAlignment = NSTextAlignmentCenter;
     tx.backgroundColor = [UIColor clearColor];
     
-    self.letterLabel = tx;
-    self.blurView = blurView;
-    
     UIVibrancyEffect *vib = [UIVibrancyEffect effectForBlurEffect:blur];
     UIVisualEffectView *vibView = [[UIVisualEffectView alloc] initWithEffect:vib];
-    vibView.frame = blurView.bounds;
     [blurView.contentView addSubview:vibView];
     [vibView.contentView addSubview:tx];
-
+    
+    self.letterLabel = tx;
+    self.blurView = blurView;
+    self.vibView = vibView;
 }
 
 static CGFloat idealFontSizeForFont( UIFont *font, CGRect rect, NSString *text) {

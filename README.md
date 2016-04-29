@@ -17,6 +17,8 @@ CNBlurredAbbreviatedLabel *label = [[CNBlurredAbbreviatedLabel alloc] initWithFr
 
 ```
 
+Alternatively, simply drop a UIView into a storyboard VC and set it's class in the Identity inspector to CNBlurredAbbreviatedLabel.
+
 ## Bug ##
 
 Setting property labelRadiusFactor which is the the base View's layer.cornerRadius property to 2.0, which calculates the bounds.size.width/2.0, causes UIBlurEffect to not function properly. Why? 
