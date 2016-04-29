@@ -5,7 +5,7 @@ A modified take on the iMessage/Contacts App style of putting initials in a circ
 
 ## Setup  ##
 
-```
+```obj-c
 CNBlurredAbbreviatedLabel *label = [[CNBlurredAbbreviatedLabel alloc] initWithFrame: frame];
 
 // Optional properties
