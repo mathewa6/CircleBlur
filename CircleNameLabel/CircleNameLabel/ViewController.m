@@ -19,19 +19,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
-        
-    CNBlurredAbbreviatedLabel *bl = [[CNBlurredAbbreviatedLabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/1.5, self.view.frame.size.height/1.5, self.view.frame.size.width/3, self.view.frame.size.width/3)];
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
+    
+//    CNBlurredAbbreviatedLabel *bl = [[CNBlurredAbbreviatedLabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/1.5, self.view.frame.size.height/1.5, self.view.frame.size.width/3, self.view.frame.size.width/3)];
 //    bl.color = [UIColor redColor];
-    [bl addGestureRecognizer:pan];
+//    [bl addGestureRecognizer:pan];
 //    bl.colorAlpha = 0.25;
 //    bl.labelRadiusFactor = 2.01;
-    [self.view addSubview: bl];
+//    [self.view addSubview: bl];
 }
 
 - (void)move:(UIPanGestureRecognizer *)pan {
-//    CGPoint touch = [pan locationInView:self.view];
-//    pan.view.center = touch;
     CGPoint translation = [pan translationInView:self.view];
     
     pan.view.center = CGPointMake(pan.view.center.x + translation.x,

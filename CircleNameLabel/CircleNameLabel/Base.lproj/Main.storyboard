@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,27 +19,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5G-a3-bci">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="307"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-CF-bCQ" customClass="CNBlurredAbbreviatedLabel">
-                                        <rect key="frame" x="8" y="220" width="120" height="120"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <bool key="isElement" value="YES"/>
-                                        </accessibility>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="letters" value="AH"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r5G-a3-bci">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="301"/>
                                 <color key="backgroundColor" red="0.73333333329999995" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-CF-bCQ" customClass="CNBlurredAbbreviatedLabel">
+                                <rect key="frame" x="20" y="240" width="120" height="120"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jqg-CF-bCQ" secondAttribute="height" multiplier="1:1" id="cMd-Fl-5P1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="letters" value="AH"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Smj-A5-jab" customClass="CNBlurredAbbreviatedLabel">
+                                <rect key="frame" x="460" y="240" width="120" height="120"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <integer key="isElement" value="1"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Smj-A5-jab" secondAttribute="height" multiplier="1:1" id="uur-0M-2Su"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="letters" value="KB"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Smj-A5-jab" firstAttribute="width" secondItem="Smj-A5-jab" secondAttribute="height" multiplier="1:1" id="48l-IW-U2y"/>
                             <constraint firstItem="r5G-a3-bci" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="90a-mc-pva"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="r5G-a3-bci" secondAttribute="bottom" constant="293" id="BMu-DY-Gvc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Smj-A5-jab" secondAttribute="trailing" id="BOH-5X-Kgs"/>
+                            <constraint firstItem="jqg-CF-bCQ" firstAttribute="baseline" secondItem="Smj-A5-jab" secondAttribute="baseline" id="QHh-7H-R8N"/>
                             <constraint firstItem="r5G-a3-bci" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bit-QX-SLv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="jqg-CF-bCQ" secondAttribute="leading" id="d2K-vh-5Mi"/>
                             <constraint firstAttribute="trailing" secondItem="r5G-a3-bci" secondAttribute="trailing" id="lFY-ox-NbI"/>
                         </constraints>
                     </view>

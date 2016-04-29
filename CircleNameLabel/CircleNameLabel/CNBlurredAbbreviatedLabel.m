@@ -114,14 +114,13 @@
     tx.textAlignment = NSTextAlignmentCenter;
     tx.backgroundColor = [UIColor clearColor];
     
-    self.letterLabel = tx;
-    self.blurView = blurView;
-    
     UIVibrancyEffect *vib = [UIVibrancyEffect effectForBlurEffect:blur];
     UIVisualEffectView *vibView = [[UIVisualEffectView alloc] initWithEffect:vib];
     [blurView.contentView addSubview:vibView];
     [vibView.contentView addSubview:tx];
-
+    
+    self.letterLabel = tx;
+    self.blurView = blurView;
     self.vibView = vibView;
 }
 
