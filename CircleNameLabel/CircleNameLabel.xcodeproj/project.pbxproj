@@ -29,6 +29,7 @@
 		97D857671CCFE7D70010953B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97D857791CD409CD0010953B /* CNBlurredAbbreviatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CNBlurredAbbreviatedLabel.h; path = ../../CNBlurredAbbreviatedLabel.h; sourceTree = "<group>"; };
 		97D8577A1CD409CD0010953B /* CNBlurredAbbreviatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CNBlurredAbbreviatedLabel.m; path = ../../CNBlurredAbbreviatedLabel.m; sourceTree = "<group>"; };
+		97D8577C1CD40D020010953B /* CNLabelTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = CNLabelTest.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +68,7 @@
 				97D8575D1CCFE7D70010953B /* ViewController.m */,
 				97D857791CD409CD0010953B /* CNBlurredAbbreviatedLabel.h */,
 				97D8577A1CD409CD0010953B /* CNBlurredAbbreviatedLabel.m */,
+				97D8577C1CD40D020010953B /* CNLabelTest.playground */,
 				97D8575F1CCFE7D70010953B /* Main.storyboard */,
 				97D857621CCFE7D70010953B /* Assets.xcassets */,
 				97D857641CCFE7D70010953B /* LaunchScreen.storyboard */,
