@@ -24,7 +24,7 @@
     // view.bounds.size.width/labelRadiusFactor.
     // However if it is set to width/2.0 blurring becomes disabled/noisy.
     // Setting it to 2.01 for some reason works. Why ?
-    self.bugLabel.labelRadiusFactor = 2.01;
+    self.bugLabel.labelRadiusFactor = 4.0;
 }
 
 /**

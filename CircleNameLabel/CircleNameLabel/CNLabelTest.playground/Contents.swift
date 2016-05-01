@@ -19,14 +19,14 @@ let bg = UIView(frame: CGRectMake(0, 0, 450, 450))
 bg.backgroundColor = UIColor.redColor()
 
 var baseView = UIView(frame: CGRectMake(112.5, 112.5, 225, 225))
-baseView.layer.cornerRadius = baseView.bounds.size.width/2.01
+baseView.layer.cornerRadius = baseView.bounds.size.width/2.0
 baseView.clipsToBounds = true
 //baseView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.25)
 
 var blurEffect = UIBlurEffect(style: .Light)
 var blurView = UIVisualEffectView(effect: blurEffect)
 blurView.frame = baseView.bounds
-//blurView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+blurView.contentView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
 
 let size: CGFloat = idealSize(UIFont.systemFontOfSize(100.0), baseView.bounds, chars)
 

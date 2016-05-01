@@ -30,16 +30,16 @@
 - (void)setColor:(UIColor *)color {
     _color = color;
     if (color != [UIColor lightGrayColor]) {
-        _blurView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha - 0.1];
+        _blurView.contentView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha - 0.1];
     } else {
-        _blurView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha];
+        _blurView.contentView.backgroundColor = [color colorWithAlphaComponent:_colorAlpha];
     }
 
 }
 
 -(void)setColorAlpha:(CGFloat)colorAlpha {
     _colorAlpha = colorAlpha;
-    _blurView.backgroundColor = [_color colorWithAlphaComponent: colorAlpha];
+    _blurView.contentView.backgroundColor = [_color colorWithAlphaComponent: colorAlpha];
 }
 
 -(void)setLabelRadiusFactor:(CGFloat)labelRadiusFactor {
@@ -90,14 +90,14 @@
 
 - (void)setDefaults {
     _color = [UIColor lightGrayColor];
-    _colorAlpha = 0.5;
-    _labelRadiusFactor = 2.01;
+    _colorAlpha = 0.25;
+    _labelRadiusFactor = 2.0;
     
 //  WTF http://stackoverflow.com/questions/28798269/round-uivisualeffectview
    
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle: UIBlurEffectStyleLight];
     UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    blurView.backgroundColor = [self.color colorWithAlphaComponent:self.colorAlpha];
+    blurView.contentView.backgroundColor = [self.color colorWithAlphaComponent:self.colorAlpha];
     
     //Changing this line is what causes the blurring to act weird.
     self.layer.cornerRadius = self.frame.size.width/_labelRadiusFactor;
