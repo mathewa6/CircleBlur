@@ -97,9 +97,9 @@
    
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle: UIBlurEffectStyleLight];
     UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    blurView.contentView.backgroundColor = [self.color colorWithAlphaComponent:self.colorAlpha];
+    blurView.contentView.backgroundColor = [self.color colorWithAlphaComponent:self.colorAlpha]; //FIXED
     
-    //Changing this line is what causes the blurring to act weird.
+    //Changing this line is what used to cause the blurring to act weird.
     self.layer.cornerRadius = self.frame.size.width/_labelRadiusFactor;
     
     self.clipsToBounds = YES;
