@@ -48,4 +48,9 @@ blurView.contentView.addSubview(vibView)
 vibView.contentView.addSubview(text)
 
 
-bg.addSubview(baseView)
+var v = CNBlurredAbbreviatedLabel(frame: CGRectMake(112.5, 112.5, 225, 225))
+//v.letters = "ABC"
+
+bg.addSubview(v)
+
+
