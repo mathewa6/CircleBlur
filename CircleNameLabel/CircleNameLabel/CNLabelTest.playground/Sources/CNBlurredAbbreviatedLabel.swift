@@ -1,21 +1,20 @@
 import UIKit
 
 public class CNBlurredAbbreviatedLabel: UIView {
-    public var letters = "_"
+    public var letters = "_" {
+        willSet(newLetters) {
+            letterLabel.text = newLetters
+            let size = idealSize(UIFont.systemFontOfSize(100.0), self.bounds, newLetters)
+            letterLabel.font = UIFont.systemFontOfSize(size)
+        }
+    }
     
-    private var letterLabel: UILabel
-    private var blurView: UIVisualEffectView
-    private var vibView: UIVisualEffectView
+    private var letterLabel = UILabel()
+    private var blurView = UIVisualEffectView()
+    private var vibView = UIVisualEffectView()
     
     override public init(frame: CGRect) {
-        let blurEffect = UIBlurEffect(style: .Light)
-        blurView = UIVisualEffectView(effect: blurEffect)
-        let vibEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
-        vibView = UIVisualEffectView(effect: vibEffect)
-        letterLabel = UILabel(frame: frame)
-        
         super.init(frame: frame)
-        
         self.setDefaults()
     }
     
@@ -24,12 +23,22 @@ public class CNBlurredAbbreviatedLabel: UIView {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        self.setDefaults()
     }
     
     override public func layoutSubviews() {
         blurView.frame = self.bounds
         vibView.frame = self.blurView.bounds
+    }
+    
+    func setEffectViewDefaults(frame: CGRect) {
+        let blurEffect = UIBlurEffect(style: .Light)
+        let vibEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
+        blurView.effect = blurEffect
+        vibView.effect = vibEffect
+        
+        letterLabel.frame = frame
     }
     
     func setDefaults() {
